@@ -36,7 +36,7 @@ footer{border-top:1px solid #ffffff10;padding:22px 0;font-size:.8rem;color:var(-
   <div class="price"><span id="p-book">400</span> جنيه <small>+ الشحن</small></div>
   <ul class="facts">
    <li>الدفع عند الاستلام: كاش أو فودافون كاش.</li>
-   <li>الشحن: <b>120</b> جنيهاً للقاهرة والجيزة، و<b>180</b> جنيهاً لباقي المحافظات (بما فيها الإسكندرية).</li>
+   <li>الشحن: <b>120</b> جنيهاً للقاهرة والجيزة، ومن <b>150</b> إلى <b>200</b> جنيه لباقي المحافظات بحسب المسافة (يظهر السعر بعد اختيار المحافظة).</li>
    <li>التوصيل: خلال يوم في القاهرة، ومن يومين إلى ثلاثة أيام في المحافظات.</li>
    <li>تُرسل نسختك من دار إنجاز، الناشر الرسمي في مصر.</li>
   </ul>
@@ -67,14 +67,14 @@ footer{border-top:1px solid #ffffff10;padding:22px 0;font-size:.8rem;color:var(-
    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
    <button class="btn" type="submit" id="submitBtn">تأكيد الطلب</button>
    <p class="msg" id="orderMsg" role="status" aria-live="polite"></p>
-   <p class="note">بعد التأكيد يصلك اتصال أو رسالة لتأكيد الطلب قبل الشحن.</p>
+   <p class="note">بعد التأكيد يصلك اتصال أو رسالة لتأكيد الطلب قبل الشحن. وللاستفسار: <a href="https://wa.me/201104807136" target="_blank" rel="noopener noreferrer" style="color:var(--gold);text-decoration:underline">دار إنجاز عبر واتساب</a>.</p>
   </form>
   <div id="done" class="ok hide">
    <h3>وصلنا طلبك ✓</h3>
    <p>رقم الطلب: <b id="d-id" dir="ltr"></b></p>
    <p id="d-total" style="margin:6px 0 14px"></p>
    <a id="d-wa" class="btn" target="_blank" rel="noopener noreferrer">أرسل تفاصيل الطلب لدار إنجاز عبر واتساب</a>
-   <p class="note">وصل طلبك إلينا وإلى دار إنجاز بالبريد. زر الواتساب لتسريع المتابعة فقط.</p>
+   <p class="note">وصل طلبك إلينا وإلى دار إنجاز بالبريد. زر الواتساب لتسريع المتابعة فقط.<br>للاستفسار عن طلبك: <a href="https://wa.me/201104807136" target="_blank" rel="noopener noreferrer" style="color:var(--gold);text-decoration:underline">دار إنجاز عبر واتساب</a>.</p>
   </div>
  </section>
 
@@ -96,7 +96,7 @@ footer{border-top:1px solid #ffffff10;padding:22px 0;font-size:.8rem;color:var(-
 <script>
 /* ===== الإعدادات (عدّل هنا فقط) ===== */
 const CFG={
-  bookEGP:400, shipCairo:120, shipOther:180, ebookUSD:4.99,
+  bookEGP:400, shipCairo:120, shipNear:150, shipFar:200, ebookUSD:4.99,
   ebookLink:'https://buy.stripe.com/8x28wQ0tj8RQ8se6z9d3i16', // نفس رابط الموقع الرئيسي
   enjazWA:'201104807136',               // واتساب إنجاز
   endpoint:'https://formsubmit.co/ajax/handasat.alyaqeen@gmail.com', // يُستبدل برمز مشفّر بعد التفعيل
@@ -108,7 +108,8 @@ GOV.forEach(g=>{const o=document.createElement('option');o.textContent=g;$('gov'
 $('p-book').textContent=CFG.bookEGP;$('e-price').textContent=CFG.ebookUSD.toFixed(2);
 const fmt=n=>n.toLocaleString('en-US')+' جنيه';
 const ar2en=s=>s.replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d));
-const shipFor=g=>!g?null:(g==='القاهرة'||g==='الجيزة')?CFG.shipCairo:CFG.shipOther;
+const NEAR=['الإسكندرية','القليوبية','الشرقية','الدقهلية','الغربية','المنوفية','البحيرة','كفر الشيخ','دمياط','بورسعيد','الإسماعيلية','السويس','الفيوم','بني سويف'];
+const shipFor=g=>!g?null:(g==='القاهرة'||g==='الجيزة')?CFG.shipCairo:NEAR.includes(g)?CFG.shipNear:CFG.shipFar;
 function calc(){const q=+$('qty').value||1,sh=shipFor($('gov').value),book=CFG.bookEGP*q;
   $('s-book').textContent=fmt(book)+(q>1?' ('+q+' نسخ)':'');
   if(sh==null){$('s-ship').textContent='اختر المحافظة';$('s-total').textContent='—';return null}
