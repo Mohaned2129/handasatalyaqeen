@@ -1,5 +1,5 @@
 <!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#050C16"><meta name="robots" content="noindex,follow">
-<link rel="canonical" href="https://handasatalyaqeen.com/masr.html"><title>اطلب كتاب هندسة اليقين من مصر</title><meta name="description" content="النسخة الورقية بالدفع عند الاستلام داخل مصر، والنسخة الإلكترونية بسعر مخصص لمصر.">
+<link rel="canonical" href="https://handasatalyaqeen.com/masr.html"><title>اطلب كتاب هندسة اليقين من مصر</title><meta name="description" content="النسخة الورقية بالدفع عند الاستلام داخل مصر، والنسخة الإلكترونية عبر Stripe.">
 <style>
 :root{--bg:#050C16;--card:#0b1521;--gold:#E0B25B;--shine:#EDC674;--white:#FAFAFA;--muted:#acb7c2;--line:#e0b25b30}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white);font-family:Tahoma,Arial,sans-serif;line-height:1.8}
@@ -25,7 +25,7 @@ footer{border-top:1px solid #ffffff10;padding:22px 0;font-size:.8rem;color:var(-
 </head><body>
 <div class="wrap">
 <div class="top"><a class="brand" href="/">هندسة اليقين</a><a class="back" href="/">← الصفحة الرئيسية</a></div>
-<section class="hero"><div class="overline">للقرّاء داخل مصر</div><h1>اطلب كتابك… <span>وادفع عند الاستلام</span></h1><p class="lead">النسخة الورقية تصلك إلى بابك من دار إنجاز، والنسخة الإلكترونية بسعر مخصص لمصر.</p></section>
+<section class="hero"><div class="overline">للقرّاء داخل مصر</div><h1>اطلب كتابك… <span>وادفع عند الاستلام</span></h1><p class="lead">النسخة الورقية تصلك إلى بابك من دار إنجاز، والنسخة الإلكترونية تصلك فور الدفع.</p></section>
 
 <div id="sa-gate" class="gate hide">البيع في المملكة مؤجّل حتى صدور موافقة الجهة المختصة. <a href="/#notify" style="color:var(--gold);text-decoration:underline">سجّل اهتمامك</a> ليصلك الخبر.</div>
 
@@ -81,10 +81,10 @@ footer{border-top:1px solid #ffffff10;padding:22px 0;font-size:.8rem;color:var(-
  <!-- الإلكتروني -->
  <aside class="card" id="ebook">
   <h2>النسخة الإلكترونية</h2>
-  <div class="price" dir="ltr" style="text-align:right">$<span id="e-price">3.14</span> <small dir="rtl">≈ <span id="e-egp">169</span> جنيهاً · للقارئ في مصر</small></div>
+  <div class="price" dir="ltr" style="text-align:right">$<span id="e-price">4.99</span> <small dir="rtl">سعر الإطلاق · نفس سعر بقية الدول</small></div>
   <ul class="facts">
    <li>تصلك فور الدفع بالبطاقة البنكية عبر Stripe (يُحتسب المبلغ بالدولار).</li>
-   <li>سعر مخصّص لمصر فقط.</li>
+   <li>نفس السعر المعلن في الموقع الرئيسي.</li>
   </ul>
   <a id="e-btn" class="btn" href="#" target="_blank" rel="noopener noreferrer">شراء النسخة الإلكترونية</a>
   <p class="note" id="e-note"></p>
@@ -96,8 +96,8 @@ footer{border-top:1px solid #ffffff10;padding:22px 0;font-size:.8rem;color:var(-
 <script>
 /* ===== الإعدادات (عدّل هنا فقط) ===== */
 const CFG={
-  bookEGP:400, shipCairo:120, shipOther:180, ebookEGP:169, ebookUSD:3.14,
-  ebookLink:'',                         // رابط Stripe المنفصل (3.14 دولار) — يُضاف بعد إنشائه
+  bookEGP:400, shipCairo:120, shipOther:180, ebookUSD:4.99,
+  ebookLink:'https://buy.stripe.com/8x28wQ0tj8RQ8se6z9d3i16', // نفس رابط الموقع الرئيسي
   enjazWA:'201104807136',               // واتساب إنجاز
   endpoint:'https://formsubmit.co/ajax/handasat.alyaqeen@gmail.com', // يُستبدل برمز مشفّر بعد التفعيل
   cc:'rhmhk5531@gmail.com'              // نسخة تلقائية لإنجاز
@@ -105,7 +105,7 @@ const CFG={
 const GOV=['القاهرة','الجيزة','الإسكندرية','القليوبية','الشرقية','الدقهلية','الغربية','المنوفية','البحيرة','كفر الشيخ','دمياط','بورسعيد','الإسماعيلية','السويس','شمال سيناء','جنوب سيناء','الفيوم','بني سويف','المنيا','أسيوط','سوهاج','قنا','الأقصر','أسوان','الوادي الجديد','البحر الأحمر','مطروح'];
 const $=id=>document.getElementById(id), f=$('orderForm');
 GOV.forEach(g=>{const o=document.createElement('option');o.textContent=g;$('gov').appendChild(o)});
-$('p-book').textContent=CFG.bookEGP;$('e-price').textContent=CFG.ebookUSD.toFixed(2);$('e-egp').textContent=CFG.ebookEGP;
+$('p-book').textContent=CFG.bookEGP;$('e-price').textContent=CFG.ebookUSD.toFixed(2);
 const fmt=n=>n.toLocaleString('en-US')+' جنيه';
 const ar2en=s=>s.replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d));
 const shipFor=g=>!g?null:(g==='القاهرة'||g==='الجيزة')?CFG.shipCairo:CFG.shipOther;
@@ -119,13 +119,11 @@ $('gov').addEventListener('change',calc);$('qty').addEventListener('change',calc
 (function(){const b=$('e-btn');
   if(CFG.ebookLink){b.href=CFG.ebookLink}else{b.classList.add('ghost');b.textContent='قريباً';b.removeAttribute('href');b.setAttribute('aria-disabled','true');b.addEventListener('click',e=>e.preventDefault())}})();
 
-/* الموقع الجغرافي: السعودية = بيع مؤجّل، والسعر المخصّص لمصر فقط */
+/* الموقع الجغرافي: السعودية = بيع مؤجّل */
 (async()=>{try{
  const t=await fetch('https://www.cloudflare.com/cdn-cgi/trace',{cache:'no-store'}).then(r=>r.text());
  const loc=(t.match(/^loc=(\w+)/m)||[])[1];
  if(loc==='SA'){$('sa-gate').classList.remove('hide');$('paper').classList.add('hide');$('ebook').classList.add('hide');return}
- if(loc&&loc!=='EG'){const b=$('e-btn');b.classList.add('ghost');b.textContent='السعر الرسمي في الصفحة الرئيسية';b.href='/#edition';b.removeAttribute('aria-disabled');b.onclick=null;
-   $('e-note').textContent='هذا السعر مخصّص للقرّاء داخل مصر.'}
 }catch(e){}})();
 
 /* إرسال الطلب */
