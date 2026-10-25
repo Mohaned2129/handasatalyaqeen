@@ -33,10 +33,10 @@ footer{border-top:1px solid #ffffff10;padding:22px 0;font-size:.8rem;color:var(-
  <!-- الورقي -->
  <section class="card" id="paper">
   <h2>النسخة الورقية</h2>
-  <div class="price"><span id="p-book">400</span> جنيه <small>+ الشحن</small></div>
+  <div class="price"><span id="p-book">600</span> جنيه <small>شامل التوصيل لأي مكان في مصر</small></div>
   <ul class="facts">
    <li>الدفع عند الاستلام: كاش أو فودافون كاش.</li>
-   <li>الشحن: <b>120</b> جنيهاً للقاهرة والجيزة، ومن <b>150</b> إلى <b>200</b> جنيه لباقي المحافظات بحسب المسافة (يظهر السعر بعد اختيار المحافظة).</li>
+   <li>السعر <b>600 جنيه شامل الشحن</b> لجميع محافظات مصر، دون أي رسوم إضافية.</li>
    <li>التوصيل: خلال يوم في القاهرة، ومن يومين إلى ثلاثة أيام في المحافظات.</li>
    <li>تُرسل نسختك من دار إنجاز، الناشر الرسمي في مصر.</li>
   </ul>
@@ -59,8 +59,7 @@ footer{border-top:1px solid #ffffff10;padding:22px 0;font-size:.8rem;color:var(-
     <div class="radio"><label><input type="radio" name="pay" value="كاش عند الاستلام" checked> كاش</label><label><input type="radio" name="pay" value="فودافون كاش عند الاستلام"> فودافون كاش</label></div></div>
    <label>ملاحظات (اختياري)<input name="notes" type="text"></label>
    <div class="sum" id="sum" aria-live="polite">
-    <div><span>الكتاب</span><span id="s-book">—</span></div>
-    <div><span>الشحن</span><span id="s-ship">اختر المحافظة</span></div>
+    <div><span>الكتاب (شامل التوصيل)</span><span id="s-book">—</span></div>
     <div class="tot"><span>الإجمالي عند الاستلام</span><span id="s-total">—</span></div>
    </div>
    <label class="consent"><input type="checkbox" id="consent" required> <span>أوافق على مشاركة بياناتي (الاسم والجوال والعنوان) مع دار إنجاز لغرض التوصيل فقط.</span></label>
@@ -96,7 +95,7 @@ footer{border-top:1px solid #ffffff10;padding:22px 0;font-size:.8rem;color:var(-
 <script>
 /* ===== الإعدادات (عدّل هنا فقط) ===== */
 const CFG={
-  bookEGP:400, shipCairo:120, shipNear:150, shipFar:200, ebookUSD:4.99,
+  bookEGP:600, ebookUSD:4.99,
   ebookLink:'https://buy.stripe.com/8x28wQ0tj8RQ8se6z9d3i16', // نفس رابط الموقع الرئيسي
   enjazWA:'201104807136',               // واتساب إنجاز
   endpoint:'https://formsubmit.co/ajax/handasat.alyaqeen@gmail.com', // يُستبدل برمز مشفّر بعد التفعيل
@@ -108,12 +107,10 @@ GOV.forEach(g=>{const o=document.createElement('option');o.textContent=g;$('gov'
 $('p-book').textContent=CFG.bookEGP;$('e-price').textContent=CFG.ebookUSD.toFixed(2);
 const fmt=n=>n.toLocaleString('en-US')+' جنيه';
 const ar2en=s=>s.replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d));
-const NEAR=['الإسكندرية','القليوبية','الشرقية','الدقهلية','الغربية','المنوفية','البحيرة','كفر الشيخ','دمياط','بورسعيد','الإسماعيلية','السويس','الفيوم','بني سويف'];
-const shipFor=g=>!g?null:(g==='القاهرة'||g==='الجيزة')?CFG.shipCairo:NEAR.includes(g)?CFG.shipNear:CFG.shipFar;
-function calc(){const q=+$('qty').value||1,sh=shipFor($('gov').value),book=CFG.bookEGP*q;
-  $('s-book').textContent=fmt(book)+(q>1?' ('+q+' نسخ)':'');
-  if(sh==null){$('s-ship').textContent='اختر المحافظة';$('s-total').textContent='—';return null}
-  $('s-ship').textContent=fmt(sh);$('s-total').textContent=fmt(book+sh);return{q,sh,book,total:book+sh}}
+const fmt=n=>n.toLocaleString('en-US')+' جنيه';
+const ar2en=s=>s.replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+function calc(){const q=+$('qty').value||1,total=CFG.bookEGP*q;
+  $('s-book').textContent=fmt(CFG.bookEGP)+(q>1?' × '+q:'');$('s-total').textContent=fmt(total);return{q,total}}
 $('gov').addEventListener('change',calc);$('qty').addEventListener('change',calc);calc();
 
 /* زر الإلكتروني */
@@ -142,7 +139,7 @@ f.addEventListener('submit',async e=>{
  const lines=[`طلب جديد — النسخة الورقية (مصر)`,`رقم الطلب: ${id}`,`الكتاب: هندسة اليقين (ورقي) × ${c.q}`,
   `الاسم: ${v('name')}`,`الجوال: ${phone}`+(phone2?` / بديل: ${phone2}`:''),
   `المحافظة: ${v('gov')} — ${v('city')}`,`العنوان: ${v('address')}`+(v('landmark')?` (علامة: ${v('landmark')})`:''),
-  `طريقة الدفع: ${pay}`,`المطلوب عند الاستلام: ${c.total} جنيه (الكتاب ${c.book} + الشحن ${c.sh})`]
+  `طريقة الدفع: ${pay}`,`المطلوب عند الاستلام: ${c.total} جنيه (شامل التوصيل لأي مكان في مصر)`]
   .concat(v('notes')?[`ملاحظات: ${v('notes')}`]:[]);
  const text=lines.join('\n');
  const b=$('submitBtn');b.disabled=true;m.textContent='جارٍ إرسال الطلب…';
@@ -151,7 +148,7 @@ f.addEventListener('submit',async e=>{
    body:JSON.stringify({_subject:`طلب جديد ${id} — هندسة اليقين (ورقي/مصر)`,_cc:CFG.cc,_captcha:'false',_template:'table',
     'رقم الطلب':id,'الاسم':v('name'),'الجوال':phone,'جوال بديل':phone2||'—','المحافظة':v('gov'),'المدينة/المنطقة':v('city'),
     'العنوان':v('address'),'علامة مميزة':v('landmark')||'—','الكمية':c.q,'طريقة الدفع':pay,
-    'الكتاب':c.book+' جنيه','الشحن':c.sh+' جنيه','المطلوب عند الاستلام':c.total+' جنيه','ملاحظات':v('notes')||'—','ملخص':text})});
+    'السعر':'600 جنيه للنسخة شامل التوصيل','المطلوب عند الاستلام':c.total+' جنيه','ملاحظات':v('notes')||'—','ملخص':text})});
   if(!r.ok)throw 0;
   f.classList.add('hide');$('done').classList.remove('hide');$('d-id').textContent=id;
   $('d-total').textContent=`المطلوب عند الاستلام: ${fmt(c.total)} (${pay.replace(' عند الاستلام','')})`;
