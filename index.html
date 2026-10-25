@@ -69,19 +69,5 @@ const descriptions=["يبدأ البناء من الداخل: خشوع، وعف�
 const buttons=[...document.querySelectorAll('.stage')];buttons.forEach((button,i)=>button.addEventListener('click',()=>{buttons.forEach((b,j)=>b.setAttribute('aria-pressed',String(i===j)));document.getElementById('stage-description').textContent=descriptions[i]}));
 const dialog=document.getElementById('cover-dialog');document.getElementById('full-cover').src=document.getElementById('cover-image').src;['open-cover','cover-link'].forEach(id=>document.getElementById(id).addEventListener('click',()=>dialog.showModal()));dialog.querySelector('.close').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()}});
 </script><script>document.querySelectorAll('[data-read]').forEach(a=>a.addEventListener('click',()=>{if(window.gtag)gtag('event','read_free',{item:a.dataset.read})}));</script>
-<script>
-/* السعودية: البيع مؤجّل حتى رد الهيئة العامة لتنظيم الإعلام — نحوّل أزرار الشراء إلى قائمة الاهتمام */
-(async()=>{try{
- const t=await fetch('https://www.cloudflare.com/cdn-cgi/trace',{cache:'no-store'}).then(r=>r.text());
- if((t.match(/^loc=(\w+)/m)||[])[1]!=='SA')return;
- document.querySelectorAll('a[href^="https://buy.stripe.com"]').forEach(a=>{
-  a.href='#notify';a.removeAttribute('target');a.dataset.geo='sa';
-  if(a.classList.contains('price-block')){a.innerHTML='<strong class="price">قريباً</strong><small>سيتوفّر في المملكة قريباً بإذن الله</small>';return}
-  const short=a.closest('nav,header')||a.closest('.topbar');
-  a.innerHTML=(short?'قريباً في المملكة':'قريباً في المملكة — سجّل اهتمامك')+' <span class="arrow" aria-hidden="true">←</span>';
- });
- document.querySelectorAll('.edition-cta > span').forEach(x=>x.style.display='none');
- if(window.gtag)gtag('event','geo_sa_gate');
-}catch(e){}})();
-</script>
+
 </body></html>

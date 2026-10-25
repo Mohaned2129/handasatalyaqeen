@@ -27,7 +27,7 @@ footer{border-top:1px solid #ffffff10;padding:22px 0;font-size:.8rem;color:var(-
 <div class="top"><a class="brand" href="/">هندسة اليقين</a><a class="back" href="/">← الصفحة الرئيسية</a></div>
 <section class="hero"><div class="overline">للقرّاء داخل مصر</div><h1>اطلب كتابك… <span>وادفع عند الاستلام</span></h1><p class="lead">النسخة الورقية تصلك إلى بابك من دار إنجاز، والنسخة الإلكترونية تصلك فور الدفع.</p></section>
 
-<div id="sa-gate" class="gate hide">البيع في المملكة مؤجّل حتى صدور موافقة الجهة المختصة. <a href="/#notify" style="color:var(--gold);text-decoration:underline">سجّل اهتمامك</a> ليصلك الخبر.</div>
+<div id="paper-gate" class="gate hide">النسخة الورقية متاحة للطلب داخل مصر فقط. يمكنك شراء <a href="#ebook" style="color:var(--gold);text-decoration:underline">النسخة الإلكترونية</a> من أي مكان.</div>
 
 <div class="grid">
  <!-- الورقي -->
@@ -115,11 +115,11 @@ $('gov').addEventListener('change',calc);$('qty').addEventListener('change',calc
 (function(){const b=$('e-btn');
   if(CFG.ebookLink){b.href=CFG.ebookLink}else{b.classList.add('ghost');b.textContent='قريباً';b.removeAttribute('href');b.setAttribute('aria-disabled','true');b.addEventListener('click',e=>e.preventDefault())}})();
 
-/* الموقع الجغرافي: السعودية = بيع مؤجّل */
+/* الموقع الجغرافي: الإلكتروني مفتوح لكل الدول، والورقي لمصر فقط */
 (async()=>{try{
  const t=await fetch('https://www.cloudflare.com/cdn-cgi/trace',{cache:'no-store'}).then(r=>r.text());
  const loc=(t.match(/^loc=(\w+)/m)||[])[1];
- if(loc==='SA'){$('sa-gate').classList.remove('hide');$('paper').classList.add('hide');$('ebook').classList.add('hide');return}
+ if(loc&&loc!=='EG'){$('paper').classList.add('hide');$('paper-gate').classList.remove('hide')}
 }catch(e){}})();
 
 /* إرسال الطلب */
