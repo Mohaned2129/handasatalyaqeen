@@ -107,8 +107,6 @@ GOV.forEach(g=>{const o=document.createElement('option');o.textContent=g;$('gov'
 $('p-book').textContent=CFG.bookEGP;$('e-price').textContent=CFG.ebookUSD.toFixed(2);
 const fmt=n=>n.toLocaleString('en-US')+' جنيه';
 const ar2en=s=>s.replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d));
-const fmt=n=>n.toLocaleString('en-US')+' جنيه';
-const ar2en=s=>s.replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d));
 function calc(){const q=+$('qty').value||1,total=CFG.bookEGP*q;
   $('s-book').textContent=fmt(CFG.bookEGP)+(q>1?' × '+q:'');$('s-total').textContent=fmt(total);return{q,total}}
 $('gov').addEventListener('change',calc);$('qty').addEventListener('change',calc);calc();
