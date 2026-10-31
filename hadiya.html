@@ -43,8 +43,8 @@ header img{width:92px;height:auto;filter:drop-shadow(0 0 14px rgba(248,192,96,.3
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-weight:700;color:var(--gold);font-size:.95rem;letter-spacing:.3px}
 .eyebrow:before{content:"";width:28px;height:1.5px;background:var(--gold)}
 .qbox{position:relative;min-height:3.9em;margin:16px 0 8px;font-weight:800;font-size:clamp(2rem,5.2vw,3.4rem);line-height:1.35}
-.q{position:absolute;inset:0;opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
-.q.on{opacity:1;transform:none}
+.q{position:absolute;inset:0;opacity:0;color:var(--gold2);text-shadow:0 0 22px rgba(248,192,96,.35),0 1px 0 rgba(0,0,0,.4);transition:opacity .7s ease}
+.q.on{opacity:1}
 .dots{display:flex;gap:8px;margin:6px 0 18px}
 .dots button{width:26px;height:4px;border:0;border-radius:4px;background:rgba(240,184,80,.25);cursor:pointer;transition:background .3s,width .3s}
 .dots button.on{background:var(--gold);width:44px}
@@ -132,7 +132,7 @@ footer a{text-decoration:none;color:var(--gold)}
  <section class="hero" aria-labelledby="q">
   <div>
    <div class="eyebrow">سؤال من سورة العنكبوت</div>
-   <h1 class="qbox gold glow" id="q" aria-live="polite">
+   <h1 class="qbox" id="q" aria-live="polite">
     <span class="q on">لماذا يشتدّ البلاء على من يحاول أن يقترب من الله؟</span>
     <span class="q">كم ليلةً نِمتَ وأنت تحسب رزقَ الغد؟</span>
     <span class="q">ما الشيء الذي لو سقط اليوم… سقطتَ معه؟</span>
