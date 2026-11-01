@@ -30,11 +30,25 @@ hr{border:none;border-top:1px solid var(--line);margin:30px 0}
   <div class="over">تمّ الدفع بنجاح ✓</div>
   <h1>أهلاً بك في الرحلة، يا رفيق الدرب</h1>
   <p>نسختك الإلكترونية من «هندسة اليقين» جاهزة.<br>حمّلها الآن واحفظها على جهازك.</p>
-  <a class="btn" id="dl" href="https://drive.google.com/file/d/1AtDfJENqIRlSo7AXuzegTuvEq6YgkorS/view?usp=sharing" target="_blank" rel="noopener">حمّل كتابك الآن ←</a>
+  <a class="btn" id="dl" href="#" target="_blank" rel="noopener" style="display:none">حمّل كتابك الآن ←</a>
+  <a class="btn" id="wa" href="https://wa.me/966579592419?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A7%D8%B4%D8%AA%D8%B1%D9%8A%D8%AA%20%D8%A7%D9%84%D9%86%D8%B3%D8%AE%D8%A9%20%D8%A7%D9%84%D8%A5%D9%84%D9%83%D8%AA%D8%B1%D9%88%D9%86%D9%8A%D8%A9%20%D9%85%D9%86%20%D9%87%D9%86%D8%AF%D8%B3%D8%A9%20%D8%A7%D9%84%D9%8A%D9%82%D9%8A%D9%86%20%D9%88%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B1%D8%A7%D8%A8%D8%B7%20%D8%A7%D9%84%D8%AA%D9%86%D8%B2%D9%8A%D9%84" target="_blank" rel="noopener">📩 استلم نسختك على واتساب ←</a>
   <p class="note">احفظ هذه الصفحة في المفضلة لتعود إليها.<br>واجهتك مشكلة في التنزيل؟ <a href="https://wa.me/966579592419?text=%D8%A7%D8%B4%D8%AA%D8%B1%D9%8A%D8%AA%20%D8%A7%D9%84%D9%86%D8%B3%D8%AE%D8%A9%20%D8%A7%D9%84%D8%A5%D9%84%D9%83%D8%AA%D8%B1%D9%88%D9%86%D9%8A%D8%A9%20%D9%88%D8%A3%D8%AD%D8%AA%D8%A7%D8%AC%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AA%D9%86%D8%B2%D9%8A%D9%84" target="_blank" rel="noopener">راسلنا على واتساب</a></p>
   <hr>
   <p class="dua">«اقرأ ببطء، كما يمشي البناء المتأنّي بين اللبنات.»<br>نسأل الله أن يجعله لك نوراً ويقيناً.</p>
 </main>
-<script>document.getElementById('dl').addEventListener('click',()=>{if(window.gtag)gtag('event','book_download')});</script>
+<script>
+/* رابط التنزيل مشفّر هنا، ومفتاحه في رابط إعادة التوجيه من Stripe فقط (#k=...) — لا يظهر في الكود */
+const C=''; // النص المشفّر (iv.ciphertext بصيغة base64url) — فارغ = التسليم عبر واتساب
+const b=s=>Uint8Array.from(atob(s.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0));
+(async()=>{try{
+  const k=new URLSearchParams(location.hash.slice(1)).get('k');if(!C||!k)return;
+  const [iv,ct]=C.split('.');
+  const key=await crypto.subtle.importKey('raw',await crypto.subtle.digest('SHA-256',new TextEncoder().encode(k)),'AES-GCM',false,['decrypt']);
+  const url=new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:b(iv)},key,b(ct)));
+  const d=document.getElementById('dl');d.href=url;d.style.display='';document.getElementById('wa').style.display='none';
+}catch(e){}})();
+document.getElementById('dl').addEventListener('click',()=>{if(window.gtag)gtag('event','book_download')});
+document.getElementById('wa').addEventListener('click',()=>{if(window.gtag)gtag('event','book_download_wa')});
+</script>
 </body>
 </html>
