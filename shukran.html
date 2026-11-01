@@ -38,7 +38,7 @@ hr{border:none;border-top:1px solid var(--line);margin:30px 0}
 </main>
 <script>
 /* رابط التنزيل مشفّر هنا، ومفتاحه في رابط إعادة التوجيه من Stripe فقط (#k=...) — لا يظهر في الكود */
-const C=''; // النص المشفّر (iv.ciphertext بصيغة base64url) — فارغ = التسليم عبر واتساب
+const C='biY8wj4cDh-X97fH.y57lAXLvq-g3uANVdm1AMoWedWEn6zmyVHnpxvOej-s5pTTwDemeF6fKn1syZr_-Vdbd7psF4ZDrueIoR3Kdoy1Tp5-APP1bz-wbj6Gi5zztXyndHu-vB318ARRnF2PQq4U'; // النص المشفّر (iv.ciphertext بصيغة base64url) — فارغ = التسليم عبر واتساب
 const b=s=>Uint8Array.from(atob(s.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0));
 (async()=>{try{
   const k=new URLSearchParams(location.hash.slice(1)).get('k');if(!C||!k)return;
