@@ -99,8 +99,14 @@ const CFG={
   ebookLink:'https://buy.stripe.com/8x28wQ0tj8RQ8se6z9d3i16', // نفس رابط الموقع الرئيسي
   enjazWA:'201104807136',               // واتساب إنجاز
   endpoint:'https://formsubmit.co/ajax/aa0bf9dc41f22d0453be6ca64ffe2428', // رمز FormSubmit المشفّر (يُرسل إلى بريد الكتاب)
-  cc:'anjazllnshrwaltwzywaltrjmt@gmail.com'              // نسخة تلقائية لإنجاز
+  cc:'anjazllnshrwaltwzywaltrjmt@gmail.com',             // نسخة تلقائية لإنجاز
+  sheet:'',                                              // رابط Apps Script لجدول الطلبات المشترك (فارغ = معطّل)
+  sheetKey:'yq-orders-7c2f'                              // مفتاح بسيط يمنع الإرسال العشوائي للجدول
 };
+/* مصدر الزيارة: يُحفظ أول UTM في الجلسة ليصل مع الطلب */
+const SRC=(()=>{try{const p=new URLSearchParams(location.search),s=p.get('utm_source');
+  if(s){const v=[s,p.get('utm_campaign')].filter(Boolean).join(' / ');sessionStorage.setItem('yq_src',v);return v}
+  return sessionStorage.getItem('yq_src')||(document.referrer?new URL(document.referrer).hostname:'مباشر')}catch(e){return ''}})();
 const GOV=['القاهرة','الجيزة','الإسكندرية','القليوبية','الشرقية','الدقهلية','الغربية','المنوفية','البحيرة','كفر الشيخ','دمياط','بورسعيد','الإسماعيلية','السويس','شمال سيناء','جنوب سيناء','الفيوم','بني سويف','المنيا','أسيوط','سوهاج','قنا','الأقصر','أسوان','الوادي الجديد','البحر الأحمر','مطروح'];
 const $=id=>document.getElementById(id), f=$('orderForm');
 GOV.forEach(g=>{const o=document.createElement('option');o.textContent=g;$('gov').appendChild(o)});
@@ -146,8 +152,11 @@ f.addEventListener('submit',async e=>{
    body:JSON.stringify({_subject:`طلب جديد ${id} — هندسة اليقين (ورقي/مصر)`,_cc:CFG.cc,_captcha:'false',_template:'table',
     'رقم الطلب':id,'الاسم':v('name'),'الجوال':phone,'جوال بديل':phone2||'—','المحافظة':v('gov'),'المدينة/المنطقة':v('city'),
     'العنوان':v('address'),'علامة مميزة':v('landmark')||'—','الكمية':c.q,'طريقة الدفع':pay,
-    'السعر':'600 جنيه للنسخة شامل التوصيل','المطلوب عند الاستلام':c.total+' جنيه','ملاحظات':v('notes')||'—','ملخص':text})});
+    'السعر':'600 جنيه للنسخة شامل التوصيل','المطلوب عند الاستلام':c.total+' جنيه','ملاحظات':v('notes')||'—','المصدر':SRC||'—','ملخص':text})});
   if(!r.ok)throw 0;
+  if(CFG.sheet){try{fetch(CFG.sheet,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},
+   body:JSON.stringify({key:CFG.sheetKey,id,name:v('name'),phone,phone2,gov:v('gov'),city:v('city'),address:v('address'),
+    landmark:v('landmark'),qty:c.q,pay,total:c.total+' جنيه',notes:v('notes'),src:SRC})})}catch(_){}}
   f.classList.add('hide');$('done').classList.remove('hide');$('d-id').textContent=id;
   $('d-total').textContent=`المطلوب عند الاستلام: ${fmt(c.total)} (${pay.replace(' عند الاستلام','')})`;
   $('d-wa').href='https://wa.me/'+CFG.enjazWA+'?text='+encodeURIComponent(text);
