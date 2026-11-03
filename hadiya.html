@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="pdf/ankabut-cover.jpg">
+<link rel="preload" as="image" href="img/book-cover-sm.jpg">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D8G0B699T7"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-D8G0B699T7');</script>
 <style>
@@ -57,6 +57,16 @@ header img{width:92px;height:auto;filter:drop-shadow(0 0 14px rgba(248,192,96,.3
 @keyframes shine{0%,60%{transform:translateX(120%)}100%{transform:translateX(-120%)}}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .chips span{font-size:.85rem;color:var(--mute);border:1px solid var(--line);border-radius:99px;padding:4px 12px}
+.alt{margin-top:14px}.alt a{color:var(--gold2);font-weight:700;text-decoration:none;border-bottom:1px dashed rgba(240,184,80,.5)}
+/* اختر بابك */
+.doors{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+.door{display:flex;flex-direction:column;gap:10px;padding:20px;border-radius:18px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));text-decoration:none;color:var(--ink)}
+.door .dn{align-self:flex-start;font-weight:800;font-size:.85rem;color:#1a1204;background:linear-gradient(180deg,#ffe2a0,var(--gold));padding:3px 12px;border-radius:99px}
+.door p{font-weight:700;font-size:1.05rem;line-height:1.6;flex:1}
+.door em{font-style:normal;font-size:.9rem;color:var(--gold2);font-weight:700}
+.door.on{border-color:rgba(240,184,80,.7);box-shadow:0 0 30px rgba(248,192,96,.12)}
+.door.on:hover{transform:translateY(-2px)}
+.door.soon{opacity:.7}.door.soon em{color:var(--mute)}
 /* الغلاف ثلاثي الأبعاد */
 .book{perspective:1200px;display:flex;justify-content:center}
 .book-in{position:relative;width:min(300px,70vw);aspect-ratio:469/661;transform:rotateY(-18deg) rotateX(4deg);transform-style:preserve-3d;transition:transform .5s ease;animation:float 6s ease-in-out infinite}
@@ -139,16 +149,30 @@ footer a{text-decoration:none;color:var(--gold)}
     <span class="q">مَثَلٌ لا يفهمه إلا «العالمون»… فهل أنت منهم؟</span>
    </h1>
    <div class="dots" role="tablist" aria-label="الأسئلة"><button class="on" aria-label="السؤال ١"></button><button aria-label="السؤال ٢"></button><button aria-label="السؤال ٣"></button><button aria-label="السؤال ٤"></button></div>
-   <p class="lead">الجواب ليس منشوراً… <b>هو رحلة من ٧ محطات</b> في باب العنكبوت. خذه هديةً منّا، كاملاً.</p>
-   <a id="cta-top" class="cta" href="pdf/ankabut.pdf" target="_blank" rel="noopener" data-read="ankabut" data-pos="hero">🎁 حمّل الأجوبة — مجاناً</a>
-   <div class="chips"><span>١١٠ صفحات</span><span>٧ محطات كاملة</span><span>بلا تسجيل</span><span>PDF</span></div>
+   <p class="lead">الجواب ليس منشوراً… <b>هو رحلة من ٤٣ محطة</b> في خمسة أبواب من القرآن.</p>
+   <a id="cta-top" class="cta" href="#buy" data-ev="to_buy_section">📖 الأجوبة كلها في الكتاب</a>
+   <p class="alt"><a href="#doors" data-ev="to_doors">🎁 أو ابدأ مجاناً: اختر باباً كاملاً هديةً لك</a></p>
   </div>
-  <div class="book"><div class="book-in"><span class="ribbon">هدية مجانية</span><img src="pdf/ankabut-cover.jpg" alt="غلاف باب العنكبوت من كتاب هندسة اليقين" width="469" height="661"></div></div>
+  <div class="book"><div class="book-in"><img src="img/book-cover-sm.jpg" alt="غلاف كتاب هندسة اليقين" width="469" height="661"></div></div>
+ </section>
+
+
+ <section id="doors" aria-labelledby="doors-h">
+  <div class="divider" aria-hidden="true">✦</div>
+  <h2 id="doors-h" class="center">اختر بابك… <span class="gold">هديتك مجاناً</span></h2>
+  <p class="sub center">خمسة أبواب في الكتاب، لكل باب سؤاله. اختر السؤال الذي يوجعك أكثر.</p>
+  <div class="doors">
+   <a class="door on" href="pdf/ankabut.pdf" target="_blank" rel="noopener" data-read="ankabut" data-pos="doors"><span class="dn">العنكبوت</span><p>لماذا يشتدّ البلاء على من يحاول أن يقترب من الله؟</p><em>حمّل الباب كاملاً ←</em></a>
+   <div class="door soon"><span class="dn">الحجرات</span><p>ما الفرق بين الإسلام والإيمان؟</p><em>يُتاح قريباً</em></div>
+   <div class="door soon"><span class="dn">الحديد</span><p>لماذا أنزل الله الحديد مع الكتاب والميزان؟</p><em>يُتاح قريباً</em></div>
+   <div class="door soon"><span class="dn">النور</span><p>لماذا قال ﴿تَلَقَّوْنَهُ بِأَلْسِنَتِكُمْ﴾ والتلقّي يكون بالأذن؟</p><em>يُتاح قريباً</em></div>
+   <div class="door soon"><span class="dn">المؤمنون</span><p>ما الكاشف الذي يخبرك بصدق علاقتك مع الله؟</p><em>يُتاح قريباً</em></div>
+  </div>
  </section>
 
  <section aria-labelledby="inside">
   <div class="divider" aria-hidden="true">✦</div>
-  <h2 id="inside" class="center">ماذا ستجد داخل الهدية؟</h2>
+  <h2 id="inside" class="center">ماذا ستجد داخل باب العنكبوت؟</h2>
   <p class="sub center">سبع محطات… كل واحدة تجيب عن وجع تعيشه.</p>
   <div class="path">
    <div class="st"><span class="n">١</span><div><h3>حقيقة الاختبار</h3><small>لماذا لا يُترك من قال «آمنت» دون فتنة؟ · الآيات ١–٧</small></div></div>
@@ -179,14 +203,14 @@ footer a{text-decoration:none;color:var(--gold)}
  </section>
 
  <section>
-  <div class="final">
+  <div class="final" id="buy">
    <div class="divider" aria-hidden="true">✦</div>
-   <h2>أسئلتك تستحق جواباً… <span class="gold">لا منشوراً</span>.</h2>
-   <p class="sub">اقرأه على مهل، محطة بعد محطة.</p>
-   <a class="cta" href="pdf/ankabut.pdf" target="_blank" rel="noopener" data-read="ankabut" data-pos="final">🎁 حمّل الهدية الآن</a>
+   <h2>الأجوبة كلها… <span class="gold">في ٤٣ محطة</span>.</h2>
+   <p class="sub">خمسة أبواب · ٢٩٨ آية · رحلة تدبّر عملية من القرآن إلى حياتك.</p>
+   <a class="cta" href="https://buy.stripe.com/8x28wQ0tj8RQ8se6z9d3i16" target="_blank" rel="noopener" data-ev="to_full_book">📱 الكتاب الإلكتروني كاملاً · $4.99</a>
    <div class="more">
-    <a href="./?utm_source=hadiya&utm_medium=page#edition" data-ev="to_full_book">📱 الكتاب الإلكتروني كاملاً · ٤٣ محطة · <b>$4.99</b></a>
     <a href="masr.html?utm_source=hadiya&utm_medium=page" data-ev="to_masr">📦 في مصر؟ الورقي يصل لبيتك · <b>600 جنيه</b></a>
+    <a href="#doors" data-ev="to_doors">🎁 لم تقرّر؟ اختر باباً مجاناً</a>
    </div>
    <p class="wa">لا تملك ثمن الكتاب الإلكتروني؟ <a href="https://wa.me/966579592419?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%86%D8%B3%D8%AE%D8%A9%20%D8%A5%D9%84%D9%83%D8%AA%D8%B1%D9%88%D9%86%D9%8A%D8%A9%20%D9%87%D8%AF%D9%8A%D8%A9%20%D9%85%D9%86%20%D9%83%D8%AA%D8%A7%D8%A8%20%D9%87%D9%86%D8%AF%D8%B3%D8%A9%20%D8%A7%D9%84%D9%8A%D9%82%D9%8A%D9%86" target="_blank" rel="noopener noreferrer" data-read="gift_request">راسلنا على واتساب ونهديك نسخة</a>.</p>
   </div>
@@ -195,7 +219,7 @@ footer a{text-decoration:none;color:var(--gold)}
 
 <footer><a href="./">handasatalyaqeen.com</a> · هندسة اليقين — من قراءة القرآن إلى عيشه</footer>
 
-<div class="sticky" id="sticky"><a href="pdf/ankabut.pdf" target="_blank" rel="noopener" data-read="ankabut" data-pos="sticky">🎁 حمّل الأجوبة — مجاناً</a></div>
+<div class="sticky" id="sticky"><a href="#buy" data-ev="to_buy_section">📖 الأجوبة كلها في الكتاب</a></div>
 
 <script>
 (function(){
