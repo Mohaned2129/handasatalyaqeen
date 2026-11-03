@@ -61,8 +61,14 @@ h2{font-size:clamp(1.6rem,5vw,2.2rem);font-weight:800;line-height:1.45;margin-to
 .facts{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:14px 0 4px}
 .facts span{border:1px solid var(--line);border-radius:99px;padding:5px 14px;font-size:.9rem;color:var(--mute)}
 .cta{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:17px 32px;border-radius:99px;font-weight:800;font-size:1.15rem;text-decoration:none;color:#1a1204;background:linear-gradient(180deg,var(--gold2),var(--gold));box-shadow:0 10px 30px rgba(240,184,80,.3)}
-.alt{display:block;margin-top:16px;color:var(--ink);font-weight:700;text-decoration:none}
-.alt b{color:var(--gold2)}
+.paper{display:flex;align-items:center;gap:14px;max-width:440px;margin:16px auto 0;padding:16px 18px;border-radius:22px;text-decoration:none;color:var(--ink);text-align:right;border:2px solid var(--gold);background:linear-gradient(180deg,rgba(240,184,80,.16),rgba(240,184,80,.04));box-shadow:0 0 28px rgba(240,184,80,.18);transition:transform .2s,box-shadow .2s}
+.paper:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(240,184,80,.32)}
+.paper .pi{flex:0 0 54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:1.8rem;background:linear-gradient(180deg,var(--gold2),var(--gold))}
+.paper .pt{flex:1;line-height:1.5}
+.paper .pt strong{display:block;font-size:1.15rem;font-weight:800}
+.paper .pt small{display:block;color:var(--mute);font-size:.88rem}
+.paper .pp{font-weight:800;font-size:1.15rem;color:var(--gold2);white-space:nowrap}
+.paper .pp small{display:block;font-size:.75rem;color:var(--mute);font-weight:500;text-align:center}
 /* الأبواب */
 .gift{margin:34px 0 10px;padding:24px 18px;border:1px solid var(--line);border-radius:24px;background:rgba(255,255,255,.02);text-align:center}
 .gift h3{font-size:1.3rem;font-weight:800}
@@ -158,7 +164,7 @@ footer a{color:var(--mute)}
   <h2>هذه ٥ أسئلة… <span class="gold">وفي الكتاب ٤٣ محطة</span></h2>
   <div class="facts"><span>٥ أبواب</span><span>٢٩٨ آية</span><span>من القرآن إلى حياتك</span></div>
   <a class="cta" id="cta-buy" href="https://buy.stripe.com/8x28wQ0tj8RQ8se6z9d3i16" target="_blank" rel="noopener" data-ev="to_full_book">📖 الكتاب الإلكتروني كاملاً · $4.99</a>
-  <a class="alt" href="masr.html?utm_source=home&utm_medium=page" data-ev="to_masr">📦 في مصر؟ الورقي يصل لبيتك · <b>600 جنيه</b></a>
+  <a class="paper" href="masr.html?utm_source=home&utm_medium=page" data-ev="to_masr"><span class="pi" aria-hidden="true">📦</span><span class="pt"><strong>اطلب النسخة الورقية</strong><small>داخل مصر · تصل لبيتك · الدفع عند الاستلام</small></span><span class="pp">600<small>جنيه</small></span></a>
  </section>
 
  <section class="gift" id="doors">
