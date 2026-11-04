@@ -22,6 +22,10 @@ footer{border-top:1px solid #ffffff10;padding:22px 0;font-size:.8rem;color:var(-
 .dl{padding:8px 14px;border-radius:99px;border:1px solid rgba(240,184,80,.5);color:inherit;text-decoration:none;font-weight:700}</style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D8G0B699T7"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-D8G0B699T7');</script>
+<!-- Meta Pixel -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1393223877211191');fbq('track','PageView');</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1393223877211191&ev=PageView&noscript=1"/></noscript>
+
 </head><body>
 <div class="wrap">
 <div class="top"><a class="brand" href="/">هندسة اليقين</a><a class="back" href="/">← الصفحة الرئيسية</a></div>
@@ -164,6 +168,7 @@ f.addEventListener('submit',async e=>{
   $('d-total').textContent=`المطلوب عند الاستلام: ${fmt(c.total)} (${pay.replace(' عند الاستلام','')})`;
   $('d-wa').href='https://wa.me/'+CFG.enjazWA+'?text='+encodeURIComponent(text);
   if(window.gtag)gtag('event','generate_lead',{value:c.total,currency:'EGP',method:'paper_cod_egypt'});
+  if(window.fbq)fbq('track','Lead',{value:c.total,currency:'EGP',content_name:'paper_egypt'});
   window.scrollTo({top:$('paper').offsetTop-20,behavior:'smooth'});
  }catch(_){m.className='msg err';m.textContent='تعذّر إرسال الطلب. حاول مرة أخرى أو راسلنا على واتساب.';b.disabled=false}
 });

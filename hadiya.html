@@ -15,6 +15,10 @@
 <link rel="preload" as="image" href="img/book-cover-sm.jpg">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D8G0B699T7"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-D8G0B699T7');</script>
+<!-- Meta Pixel -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1393223877211191');fbq('track','PageView');</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1393223877211191&ev=PageView&noscript=1"/></noscript>
+
 <style>
 :root{--bg:#010a15;--bg2:#06182b;--gold:#f0b850;--gold2:#f8c868;--goldd:#d99a35;--ink:#f4efe6;--mute:#a8a090;--line:rgba(240,184,80,.22)}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -236,7 +240,7 @@ footer a{text-decoration:none;color:var(--gold)}
  new IntersectionObserver(function(es){st.classList.toggle('show',!es[0].isIntersecting&&es[0].boundingClientRect.top<0)}).observe(top);
  // القياس
  document.querySelectorAll('[data-read]').forEach(function(a){a.addEventListener('click',function(){if(window.gtag)gtag('event','read_free',{item:a.dataset.read,position:a.dataset.pos||'',page:'hadiya'})})});
- document.querySelectorAll('[data-ev]').forEach(function(a){a.addEventListener('click',function(){if(window.gtag)gtag('event',a.dataset.ev,{page:'hadiya'})})});
+ document.querySelectorAll('[data-ev]').forEach(function(a){a.addEventListener('click',function(){if(window.gtag)gtag('event',a.dataset.ev,{page:'hadiya'});if(window.fbq){if(a.dataset.ev==='to_full_book')fbq('track','InitiateCheckout',{value:4.99,currency:'USD'});else if(a.dataset.ev==='to_masr')fbq('trackCustom','ToMasr')}})});
 })();
 </script>
 </body>

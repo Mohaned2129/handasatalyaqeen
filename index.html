@@ -15,6 +15,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D8G0B699T7"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-D8G0B699T7');</script>
+<!-- Meta Pixel -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1393223877211191');fbq('track','PageView');</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1393223877211191&ev=PageView&noscript=1"/></noscript>
+
 <style>
 :root{--bg:#010a15;--card:#06152a;--ink:#f4efe6;--mute:#9fb0c3;--gold:#f0b850;--gold2:#ffd98a;--line:rgba(240,184,80,.22)}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -197,7 +201,7 @@ footer a{color:var(--mute)}
   if(so)sessionStorage.setItem('yq_src',[so,ca].filter(Boolean).join(' / '));
   var src=sessionStorage.getItem('yq_src')||'';
   if(/_eg\b|egypt|masr/i.test(src)){var pp=document.querySelector('.paper'),cb=document.getElementById('cta-buy');pp.parentNode.insertBefore(pp,cb);cb.style.marginTop='18px'}}catch(e){}
- function ev(n,p){if(window.gtag)gtag('event',n,Object.assign({page:P},p||{}))}
+ function ev(n,p){p=p||{};if(window.gtag)gtag('event',n,Object.assign({page:P},p));if(window.fbq){if(n==='open_answer')fbq('track','ViewContent',{content_name:p.item||''});else if(n==='to_full_book')fbq('track','InitiateCheckout',{value:4.99,currency:'USD'});else if(n==='to_masr')fbq('trackCustom','ToMasr');else if(n==='to_wa_channel')fbq('trackCustom','WaChannel');else if(n==='read_free')fbq('trackCustom','ReadFree',{item:p.item||''})}}
  document.querySelectorAll('details').forEach(function(d){d.addEventListener('toggle',function(){
   if(d.open){ev('open_answer',{item:d.dataset.q});document.querySelectorAll('details[open]').forEach(function(o){if(o!==d)o.open=false})}})});
  document.querySelectorAll('[data-ev]').forEach(function(a){a.addEventListener('click',function(){ev(a.dataset.ev,{item:a.dataset.from||''})})});
