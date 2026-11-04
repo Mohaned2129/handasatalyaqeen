@@ -164,7 +164,7 @@ footer a{color:var(--mute)}
   <h2>هذه ٥ أسئلة… <span class="gold">وفي الكتاب ٤٣ محطة</span></h2>
   <div class="facts"><span>٥ أبواب</span><span>٢٩٨ آية</span><span>من القرآن إلى حياتك</span></div>
   <a class="cta" id="cta-buy" href="https://buy.stripe.com/8x28wQ0tj8RQ8se6z9d3i16" target="_blank" rel="noopener" data-ev="to_full_book">📖 الكتاب الإلكتروني كاملاً · $4.99</a>
-  <a class="paper" href="masr.html?utm_source=home&utm_medium=page" data-ev="to_masr"><span class="pi" aria-hidden="true">📦</span><span class="pt"><strong>اطلب النسخة الورقية</strong><small>داخل مصر · تصل لبيتك · الدفع عند الاستلام</small></span><span class="pp">600<small>جنيه</small></span></a>
+  <a class="paper" href="masr.html" data-ev="to_masr"><span class="pi" aria-hidden="true">📦</span><span class="pt"><strong>اطلب النسخة الورقية</strong><small>داخل مصر · تصل لبيتك · الدفع عند الاستلام</small></span><span class="pp">600<small>جنيه</small></span></a>
  </section>
 
  <span id="sample"></span><section class="gift" id="doors">
@@ -186,6 +186,10 @@ footer a{color:var(--mute)}
 <script>
 (function(){
  var P='home';
+ try{var u=new URLSearchParams(location.search),so=u.get('utm_source'),ca=u.get('utm_campaign')||'';
+  if(so)sessionStorage.setItem('yq_src',[so,ca].filter(Boolean).join(' / '));
+  var src=sessionStorage.getItem('yq_src')||'';
+  if(/_eg\b|egypt|masr/i.test(src)){var pp=document.querySelector('.paper'),cb=document.getElementById('cta-buy');pp.parentNode.insertBefore(pp,cb);cb.style.marginTop='18px'}}catch(e){}
  function ev(n,p){if(window.gtag)gtag('event',n,Object.assign({page:P},p||{}))}
  document.querySelectorAll('details').forEach(function(d){d.addEventListener('toggle',function(){
   if(d.open){ev('open_answer',{item:d.dataset.q});document.querySelectorAll('details[open]').forEach(function(o){if(o!==d)o.open=false})}})});
