@@ -47,28 +47,30 @@ footer{border-top:1px solid #ffffff10;padding:22px 0;font-size:.8rem;color:var(-
    <li>تُرسل نسختك من دار إنجاز، الناشر الرسمي في مصر.</li>
   </ul>
   <form id="orderForm" novalidate>
-   <div class="two">
-    <label>الاسم الكامل<input name="name" type="text" required autocomplete="name"></label>
-    <label>رقم الجوال (واتساب يُفضَّل)<input name="phone" type="tel" inputmode="numeric" placeholder="01XXXXXXXXX" required autocomplete="tel" dir="ltr"></label>
-   </div>
-   <div class="two">
-    <label>جوال بديل (اختياري)<input name="phone2" type="tel" inputmode="numeric" placeholder="01XXXXXXXXX" dir="ltr"></label>
-    <label>المحافظة<select name="gov" id="gov" required><option value="">اختر المحافظة</option></select></label>
-   </div>
-   <div class="two">
-    <label>المدينة / المنطقة<input name="city" type="text" required></label>
-    <label>الكمية<select name="qty" id="qty"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
-   </div>
-   <label>العنوان بالتفصيل (الشارع، رقم المبنى، الدور، الشقة)<textarea name="address" rows="3" required></textarea></label>
-   <label>علامة مميزة قرب العنوان (اختياري)<input name="landmark" type="text"></label>
-   <div><div style="font-size:.85rem;color:var(--muted);margin-bottom:6px">طريقة الدفع عند الاستلام</div>
-    <div class="radio"><label><input type="radio" name="pay" value="كاش عند الاستلام" checked> كاش</label><label><input type="radio" name="pay" value="فودافون كاش عند الاستلام"> فودافون كاش</label></div></div>
-   <label>ملاحظات (اختياري)<input name="notes" type="text"></label>
+   <p style="margin:0 0 12px;color:var(--muted);font-size:.95rem">✍️ ثلاث خانات فقط… ونتواصل معك لنكمل باقي التفاصيل.</p>
+   <label>الاسم<input name="name" type="text" required autocomplete="name"></label>
+   <label>رقم الجوال (واتساب يُفضَّل)<input name="phone" type="tel" inputmode="numeric" placeholder="01XXXXXXXXX" required autocomplete="tel" dir="ltr"></label>
+   <label>المحافظة<select name="gov" id="gov" required><option value="">اختر المحافظة</option></select></label>
+   <details class="more-info" style="margin:6px 0 10px;border:1px dashed rgba(240,184,80,.35);border-radius:14px;padding:10px 14px">
+    <summary style="cursor:pointer;font-weight:700;color:var(--gold)">أضف العنوان الآن (اختياري) · أو نأخذه منك على الهاتف</summary>
+    <div class="two" style="margin-top:10px">
+     <label>المدينة / المنطقة<input name="city" type="text"></label>
+     <label>الكمية<select name="qty" id="qty"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+    </div>
+    <label>العنوان بالتفصيل<textarea name="address" rows="2"></textarea></label>
+    <div class="two">
+     <label>علامة مميزة (اختياري)<input name="landmark" type="text"></label>
+     <label>جوال بديل (اختياري)<input name="phone2" type="tel" inputmode="numeric" placeholder="01XXXXXXXXX" dir="ltr"></label>
+    </div>
+    <div><div style="font-size:.85rem;color:var(--muted);margin-bottom:6px">طريقة الدفع عند الاستلام</div>
+     <div class="radio"><label><input type="radio" name="pay" value="كاش عند الاستلام" checked> كاش</label><label><input type="radio" name="pay" value="فودافون كاش عند الاستلام"> فودافون كاش</label></div></div>
+    <label>ملاحظات (اختياري)<input name="notes" type="text"></label>
+   </details>
    <div class="sum" id="sum" aria-live="polite">
     <div><span>الكتاب (شامل التوصيل)</span><span id="s-book">—</span></div>
     <div class="tot"><span>الإجمالي عند الاستلام</span><span id="s-total">—</span></div>
    </div>
-   <label class="consent"><input type="checkbox" id="consent" required> <span>أوافق على مشاركة بياناتي (الاسم والجوال والعنوان) مع دار إنجاز لغرض التوصيل فقط.</span></label>
+   <p class="consent" style="font-size:.85rem;color:var(--muted)">بالضغط على «تأكيد الطلب» توافق على مشاركة بياناتك مع دار إنجاز لغرض التوصيل فقط.</p>
    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
    <button class="btn" type="submit" id="submitBtn">تأكيد الطلب</button>
    <p class="msg" id="orderMsg" role="status" aria-live="polite"></p>
@@ -140,16 +142,15 @@ f.addEventListener('submit',async e=>{
  e.preventDefault();const m=$('orderMsg');m.className='msg';
  const v=n=>f.elements[n].value.trim(), phone=ar2en(v('phone')).replace(/\D/g,''), phone2=ar2en(v('phone2')).replace(/\D/g,'');
  const c=calc();
- if(!v('name')||!v('city')||!v('address')||!v('gov')){m.className='msg err';m.textContent='فضلاً أكمل الاسم والمحافظة والمدينة والعنوان.';return}
+ if(!v('name')||!v('gov')){m.className='msg err';m.textContent='فضلاً اكتب اسمك واختر محافظتك.';return}
  if(!/^01[0125]\d{8}$/.test(phone)){m.className='msg err';m.textContent='رقم الجوال غير صحيح، مثال: 01012345678';return}
  if(phone2&&!/^01[0125]\d{8}$/.test(phone2)){m.className='msg err';m.textContent='الجوال البديل غير صحيح.';return}
- if(!$('consent').checked){m.className='msg err';m.textContent='نحتاج موافقتك على مشاركة بيانات التوصيل مع دار إنجاز.';return}
  if(f.elements._honey.value)return;
  const id='YQ-'+new Date().toISOString().slice(2,10).replace(/-/g,'')+'-'+Math.random().toString(36).slice(2,6).toUpperCase();
  const pay=f.elements.pay.value;
  const lines=[`طلب جديد — النسخة الورقية (مصر)`,`رقم الطلب: ${id}`,`الكتاب: هندسة اليقين (ورقي) × ${c.q}`,
   `الاسم: ${v('name')}`,`الجوال: ${phone}`+(phone2?` / بديل: ${phone2}`:''),
-  `المحافظة: ${v('gov')} — ${v('city')}`,`العنوان: ${v('address')}`+(v('landmark')?` (علامة: ${v('landmark')})`:''),
+  `المحافظة: ${v('gov')}`+(v('city')?` — ${v('city')}`:''),`العنوان: ${v('address')||'⚠️ يُستكمل هاتفياً مع المشتري'}`+(v('landmark')?` (علامة: ${v('landmark')})`:''),
   `طريقة الدفع: ${pay}`,`المطلوب عند الاستلام: ${c.total} جنيه (شامل التوصيل لأي مكان في مصر)`]
   .concat(v('notes')?[`ملاحظات: ${v('notes')}`]:[]);
  const text=lines.join('\n');
@@ -157,12 +158,12 @@ f.addEventListener('submit',async e=>{
  try{
   const r=await fetch(CFG.endpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
    body:JSON.stringify({_subject:`طلب جديد ${id} — هندسة اليقين (ورقي/مصر)`,_cc:CFG.cc,_captcha:'false',_template:'table',
-    'رقم الطلب':id,'الاسم':v('name'),'الجوال':phone,'جوال بديل':phone2||'—','المحافظة':v('gov'),'المدينة/المنطقة':v('city'),
-    'العنوان':v('address'),'علامة مميزة':v('landmark')||'—','الكمية':c.q,'طريقة الدفع':pay,
+    'رقم الطلب':id,'الاسم':v('name'),'الجوال':phone,'جوال بديل':phone2||'—','المحافظة':v('gov'),'المدينة/المنطقة':v('city')||'—',
+    'العنوان':v('address')||'⚠️ يُستكمل هاتفياً مع المشتري','علامة مميزة':v('landmark')||'—','الكمية':c.q,'طريقة الدفع':pay,
     'السعر':'600 جنيه للنسخة شامل التوصيل','المطلوب عند الاستلام':c.total+' جنيه','ملاحظات':v('notes')||'—','المصدر':SRC||'—','ملخص':text})});
   if(!r.ok)throw 0;
   if(CFG.sheet){try{fetch(CFG.sheet,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},
-   body:JSON.stringify({key:CFG.sheetKey,id,name:v('name'),phone,phone2,gov:v('gov'),city:v('city'),address:v('address'),
+   body:JSON.stringify({key:CFG.sheetKey,id,name:v('name'),phone,phone2,gov:v('gov'),city:v('city')||'—',address:v('address')||'يُستكمل هاتفياً',
     landmark:v('landmark'),qty:c.q,pay,total:c.total+' جنيه',notes:v('notes'),src:SRC})})}catch(_){}}
   f.classList.add('hide');$('done').classList.remove('hide');$('d-id').textContent=id;
   $('d-total').textContent=`المطلوب عند الاستلام: ${fmt(c.total)} (${pay.replace(' عند الاستلام','')})`;
