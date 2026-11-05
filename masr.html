@@ -88,14 +88,23 @@ footer{border-top:1px solid #ffffff10;padding:22px 0;font-size:.8rem;color:var(-
 
  <!-- الإلكتروني -->
  <aside class="card" id="ebook">
-  <h2>النسخة الإلكترونية</h2>
-  <div class="price" dir="ltr" style="text-align:right">$<span id="e-price">4.99</span> <small dir="rtl">سعر الإطلاق · نفس سعر بقية الدول</small></div>
+  <h2>النسخة الإلكترونية (PDF)</h2>
+  <div class="price"><span>149</span> جنيه <small>بفودافون كاش · تصلك على واتساب</small></div>
   <ul class="facts">
-   <li>تصلك فور الدفع بالبطاقة البنكية عبر Stripe (يُحتسب المبلغ بالدولار).</li>
-   <li>نفس السعر المعلن في الموقع الرئيسي.</li>
+   <li>الكتاب كاملاً: ٤٣ محطة في خمس سور، على جوالك أينما كنت.</li>
+   <li>ادفع بفودافون كاش، وأرسل صورة التحويل على واتساب، ويصلك الكتاب في اليوم نفسه بإذن الله.</li>
   </ul>
-  <a id="e-btn" class="btn" href="#" target="_blank" rel="noopener noreferrer">شراء النسخة الإلكترونية</a>
-  <p class="note" id="e-note"></p>
+  <button type="button" class="btn" id="vc-open" style="width:100%;border:0;cursor:pointer">📱 اشترِ بفودافون كاش · 149 جنيه</button>
+  <div id="vc" class="hide" style="margin-top:16px;padding:16px;border:1px solid rgba(240,184,80,.45);border-radius:16px">
+   <p style="margin:0 0 10px"><b>١. حوّل 149 جنيهاً</b> إلى محفظة فودافون كاش:</p>
+   <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><b dir="ltr" style="font-size:1.5rem;color:var(--gold);letter-spacing:1px">01024260541</b><button type="button" id="vc-copy" style="padding:6px 14px;border-radius:99px;border:1px solid rgba(240,184,80,.5);background:none;color:inherit;cursor:pointer">نسخ الرقم</button></div>
+   <p class="note" style="margin:6px 0 12px">سيظهر لك اسم <b>يوسف مصطفى</b>، وكيلنا في مصر.</p>
+   <p style="margin:0 0 6px"><b>٢. رقم طلبك:</b> <b dir="ltr" id="vc-id" style="color:var(--gold)"></b></p>
+   <p style="margin:0 0 12px"><b>٣. أرسل صورة التحويل</b> على واتساب، ويصلك الكتاب:</p>
+   <a class="btn" id="vc-wa" target="_blank" rel="noopener noreferrer" style="display:block;text-align:center">✅ أرسلت المبلغ · أرسل صورة التحويل</a>
+  </div>
+  <p class="note" style="margin-top:14px">ومن يملك بطاقة بنكية: <a id="e-btn" href="#" target="_blank" rel="noopener noreferrer" style="color:var(--gold);text-decoration:underline">ادفع بالبطاقة ($4.99) ويصلك الكتاب فوراً</a>.</p>
+  <p class="note" id="e-note" style="display:none"></p>
  </aside>
 </div>
 </div>
@@ -119,7 +128,7 @@ const SRC=(()=>{try{const p=new URLSearchParams(location.search),s=p.get('utm_so
 const GOV=['القاهرة','الجيزة','الإسكندرية','القليوبية','الشرقية','الدقهلية','الغربية','المنوفية','البحيرة','كفر الشيخ','دمياط','بورسعيد','الإسماعيلية','السويس','شمال سيناء','جنوب سيناء','الفيوم','بني سويف','المنيا','أسيوط','سوهاج','قنا','الأقصر','أسوان','الوادي الجديد','البحر الأحمر','مطروح'];
 const $=id=>document.getElementById(id), f=$('orderForm');
 GOV.forEach(g=>{const o=document.createElement('option');o.textContent=g;$('gov').appendChild(o)});
-$('p-book').textContent=CFG.bookEGP;$('e-price').textContent=CFG.ebookUSD.toFixed(2);
+$('p-book').textContent=CFG.bookEGP;
 const fmt=n=>n.toLocaleString('en-US')+' جنيه';
 const ar2en=s=>s.replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d));
 function calc(){const q=+$('qty').value||1,total=CFG.bookEGP*q;
@@ -173,5 +182,18 @@ f.addEventListener('submit',async e=>{
   window.scrollTo({top:$('paper').offsetTop-20,behavior:'smooth'});
  }catch(_){m.className='msg err';m.textContent='تعذّر إرسال الطلب. حاول مرة أخرى أو راسلنا على واتساب.';b.disabled=false}
 });
+
+/* فودافون كاش للإلكتروني */
+(function(){const o=document.getElementById('vc-open'),box=document.getElementById('vc');if(!o)return;
+ const id='YQ-E-'+Math.random().toString(36).slice(2,6).toUpperCase();
+ document.getElementById('vc-id').textContent=id;
+ const src=(typeof SRC!=='undefined'&&SRC)?SRC:'';
+ const msg='السلام عليكم، حوّلت 149 جنيهاً بفودافون كاش لشراء النسخة الإلكترونية من «هندسة اليقين».\nرقم الطلب: '+id+(src?'\nالمصدر: '+src:'')+'\n(مرفق صورة التحويل)';
+ document.getElementById('vc-wa').href='https://wa.me/966579592419?text='+encodeURIComponent(msg);
+ o.addEventListener('click',()=>{box.classList.remove('hide');o.style.display='none';
+  if(window.gtag)gtag('event','vc_start',{value:149,currency:'EGP'});if(window.fbq)fbq('track','InitiateCheckout',{value:149,currency:'EGP',content_name:'ebook_vc'});});
+ document.getElementById('vc-copy').addEventListener('click',e=>{try{navigator.clipboard.writeText('01024260541');e.target.textContent='تم النسخ ✓'}catch(_){}});
+ document.getElementById('vc-wa').addEventListener('click',()=>{if(window.gtag)gtag('event','vc_sent',{value:149,currency:'EGP',id});if(window.fbq)fbq('trackCustom','VodafoneSent',{value:149,currency:'EGP'});});
+})();
 </script>
 </body></html>
