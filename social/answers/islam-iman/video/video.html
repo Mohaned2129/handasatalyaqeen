@@ -1,0 +1,85 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>
+@font-face{font-family:T;src:url(file:///home/claude/car/node_modules/@fontsource/tajawal/files/tajawal-arabic-800-normal.woff2);font-weight:800}
+@font-face{font-family:T;src:url(file:///home/claude/car/node_modules/@fontsource/tajawal/files/tajawal-arabic-700-normal.woff2);font-weight:700}
+@font-face{font-family:T;src:url(file:///home/claude/car/node_modules/@fontsource/tajawal/files/tajawal-arabic-500-normal.woff2);font-weight:500}
+@font-face{font-family:T;src:url(file:///home/claude/car/node_modules/@fontsource/tajawal/files/tajawal-latin-800-normal.woff2);font-weight:800}
+@font-face{font-family:T;src:url(file:///home/claude/car/node_modules/@fontsource/tajawal/files/tajawal-latin-700-normal.woff2);font-weight:700}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#020a15}
+body{font-family:T;color:#f4efe6;position:relative;
+ background:radial-gradient(ellipse 80% 45% at 50% 42%,#0e2541 0%,#020a15 70%)}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(240,184,80,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(240,184,80,.05) 1px,transparent 1px);background-size:90px 90px}
+.dot{position:absolute;width:8px;height:8px;border-radius:50%;background:#ffd98a;box-shadow:0 0 14px 4px rgba(240,184,80,.55)}
+.logo{position:absolute;top:150px;left:50%;transform:translateX(-50%);width:200px}
+.sc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 80px}
+.e{opacity:0}
+.chip{display:inline-block;font-weight:800;font-size:40px;color:#1a1204;background:linear-gradient(180deg,#ffe2a0,#f0b850);padding:10px 34px;border-radius:99px;margin-bottom:46px}
+.big{font-weight:800;font-size:84px;line-height:1.55}
+.g{background:linear-gradient(180deg,#ffe2a0,#f0b850);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mid{font-weight:800;font-size:72px;line-height:1.6}
+.list div{font-weight:800;font-size:76px;line-height:1.75}
+.nums{display:flex;gap:30px;margin-top:10px}
+.num{border:2px solid rgba(240,184,80,.6);border-radius:30px;padding:24px 34px}
+.num b{display:block;font-size:110px;line-height:1.1}
+.num span{font-size:42px;font-weight:700;color:#e7dfd0}
+.cover{width:440px;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.7),0 0 90px rgba(240,184,80,.25);margin:30px 0 40px}
+.btn{font-weight:800;font-size:54px;color:#1a1204;background:linear-gradient(180deg,#ffe2a0,#f0b850);padding:24px 60px;border-radius:99px;box-shadow:0 0 60px rgba(240,184,80,.45)}
+.site{margin-top:34px;font-size:44px;font-weight:700}
+.site b{color:#ffd98a;direction:ltr;unicode-bidi:embed}
+.eg{margin-top:26px;font-size:34px;font-weight:700;color:#cfd8e2;line-height:1.6}
+.srs{display:flex;flex-direction:column;gap:18px;width:760px}
+.sr{display:flex;justify-content:space-between;align-items:center;border:2px solid rgba(240,184,80,.45);border-radius:26px;padding:18px 40px;background:rgba(240,184,80,.05)}
+.sr b{font-size:64px;font-weight:800;line-height:1.3}
+.sr span{font-size:44px;font-weight:700;color:#e7dfd0}
+@font-face{font-family:A;src:url(file:///home/claude/car/node_modules/@fontsource/amiri/files/amiri-arabic-700-normal.woff2);font-weight:700}
+.ay{font-family:A;font-weight:700;font-size:62px;line-height:2;color:#f4efe6;margin-top:10px}
+.ref{font-size:34px;color:#9fb0c3;margin-top:6px}
+.open{border:2px solid rgba(240,184,80,.6);border-radius:34px;padding:34px 40px;background:rgba(240,184,80,.07)}
+</style></head><body>
+<div class="grid"></div>
+<div id="dots"></div>
+<img class="logo" src="file:///home/claude/handasatalyaqeen/social/brand/logo.png">
+
+<div class="sc"><div class="e big" data-a="0.3" data-b="4.2">تصلّي وتصوم…</div>
+ <div class="e big g" data-a="1.6" data-b="4.2" style="margin-top:20px">فهل أنت مؤمن؟<br>أم مسلم فقط؟</div></div>
+
+<div class="sc"><div class="e chip" data-a="4.5" data-b="9.6">قالوا بثقة: آمنّا… فنزل الجواب</div>
+ <div class="e ay" data-a="5.0" data-b="9.6">﴿قُل لَّمۡ تُؤۡمِنُواْ وَلَٰكِن قُولُوٓاْ أَسۡلَمۡنَا وَلَمَّا يَدۡخُلِ ٱلۡإِيمَٰنُ فِي قُلُوبِكُمۡ﴾</div>
+ <div class="e ref" data-a="5.6" data-b="9.6">[الحجرات: من الآية ١٤]</div></div>
+
+<div class="sc"><div class="e big" data-a="9.9" data-b="13.6">الإسلام…<br>ما يراه الناس منك</div>
+ <div class="e big g" data-a="11.3" data-b="13.6" style="margin-top:30px">والإيمان…<br>ما يراه الله فيك</div></div>
+
+<div class="sc"><div class="e chip" data-a="13.9" data-b="18.4">🔑 الكلمة: «ولمّا»</div>
+ <div class="e mid" data-a="14.2" data-b="18.4">لم يقل «ولم يدخل»…<br>بل «ولمّا يدخل»</div>
+ <div class="e mid g" data-a="15.8" data-b="18.4" style="margin-top:24px">لم يدخل بعد…<br>لكنه في الطريق</div></div>
+
+<div class="sc list" style="--x:1"><div class="e chip" data-a="18.7" data-b="23.6" style="font-size:40px">لحظات لا يراك فيها إلا الله</div>
+ <div class="e" style="font-size:62px" data-a="19.0" data-b="23.6">ربحٌ فيه شبهة… في عملك</div>
+ <div class="e" style="font-size:62px" data-a="20.0" data-b="23.6">جوالك آخر الليل… في خلوتك</div>
+ <div class="e g" style="font-size:62px" data-a="21.0" data-b="23.6">بابٌ مغلق… في بيتك</div></div>
+
+<div class="sc"><div class="e chip" data-a="23.9" data-b="27.3">سؤالك الليلة</div>
+ <div class="e big" data-a="24.2" data-b="27.3">ماذا يبقى منك…</div>
+ <div class="e big g" data-a="25.2" data-b="27.3">حين يكلّفك الثبات ثمناً؟</div></div>
+
+<div class="sc"><div class="e chip" data-a="27.6" data-b="31.6">سؤالٌ في المحطة نفسها… جوابه في الكتاب</div>
+ <div class="e open mid" data-a="27.9" data-b="31.6">يصلّي ويصوم…<br>ثم يشعر أنه تفضّل على الله بعبادته<br><span class="g">بماذا ردّ القرآن عليه؟</span></div></div>
+
+<div class="sc" style="padding-top:120px"><div class="e mid" data-a="31.9" data-b="99">الجواب في «هندسة اليقين»</div>
+ <img class="e cover" data-a="32.1" data-b="99" src="file:///home/claude/handasatalyaqeen/social/brand/book-cover.jpg">
+ <div class="e btn" data-a="32.6" data-b="99">٤٣ محطة في خمس سور 📖</div>
+ <div class="e site" data-a="33.0" data-b="99">اكتب في المتصفح ← <b>handasatalyaqeen.com</b></div></div>
+
+<script>
+const D=document.getElementById('dots'),pts=[];
+for(let i=0;i<22;i++){const d=document.createElement('div');d.className='dot';const p={x:Math.random()*1080,y:Math.random()*1920,s:.4+Math.random()*1.2,ph:Math.random()*6.28,el:d};D.appendChild(d);pts.push(p)}
+const els=[...document.querySelectorAll('.e')];
+function ease(x){x=Math.max(0,Math.min(1,x));return x*x*(3-2*x)}
+window.render=function(t){
+ els.forEach(e=>{const a=+e.dataset.a,b=+e.dataset.b;let o=ease((t-a)/0.5)*(1-ease((t-b+0.4)/0.4));
+  const y=(1-ease((t-a)/0.6))*28;e.style.opacity=o;e.style.transform=`translateY(${y}px)`});
+ pts.forEach(p=>{p.el.style.left=p.x+'px';p.el.style.top=((p.y-t*14*p.s)%1920+1920)%1920+'px';p.el.style.opacity=.35+.45*Math.sin(t*1.3+p.ph)});
+}
+render(0);
+</script></body></html>
