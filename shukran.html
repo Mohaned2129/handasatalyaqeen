@@ -10,7 +10,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D8G0B699T7"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-D8G0B699T7');gtag('event','purchase_thanks');</script>
 <!-- Meta Pixel -->
-<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1393223877211191');fbq('track','PageView');if(/[#&]k=/.test(location.hash))fbq('track','Purchase',{value:4.99,currency:'USD'});</script>
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1393223877211191');fbq('track','PageView');fbq('track','Purchase',{value:4.99,currency:'USD'});</script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1393223877211191&ev=PageView&noscript=1"/></noscript>
 
 <style>
@@ -45,7 +45,7 @@ hr{border:none;border-top:1px solid var(--line);margin:30px 0}
 const C='biY8wj4cDh-X97fH.y57lAXLvq-g3uANVdm1AMoWedWEn6zmyVHnpxvOej-s5pTTwDemeF6fKn1syZr_-Vdbd7psF4ZDrueIoR3Kdoy1Tp5-APP1bz-wbj6Gi5zztXyndHu-vB318ARRnF2PQq4U'; // النص المشفّر (iv.ciphertext بصيغة base64url) — فارغ = التسليم عبر واتساب
 const b=s=>Uint8Array.from(atob(s.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0));
 (async()=>{try{
-  const k=new URLSearchParams(location.hash.slice(1)).get('k');if(!C||!k)return;
+  const k=new URLSearchParams(location.hash.slice(1)).get('k')||'ic_JAC6jrdiX9jr4';if(!C||!k)return; /* مؤقت: يعمل دون المفتاح حتى يُضبط رابط Stripe */
   const [iv,ct]=C.split('.');
   const key=await crypto.subtle.importKey('raw',await crypto.subtle.digest('SHA-256',new TextEncoder().encode(k)),'AES-GCM',false,['decrypt']);
   const url=new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:b(iv)},key,b(ct)));
