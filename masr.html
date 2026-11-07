@@ -19,7 +19,7 @@ input,select,textarea{font:inherit;color:inherit;padding:13px 15px;border-radius
 .note{font-size:.78rem;color:var(--muted);margin-top:10px}.gate{background:#2a1c0e;border:1px solid #7a5a2f;border-radius:18px;padding:18px;margin:20px 0;text-align:center}
 footer{border-top:1px solid #ffffff10;padding:22px 0;font-size:.8rem;color:var(--muted);text-align:center}
 @media(max-width:820px){.grid{grid-template-columns:1fr}.two{grid-template-columns:1fr}}
-.dl{padding:8px 14px;border-radius:99px;border:1px solid rgba(240,184,80,.5);color:inherit;text-decoration:none;font-weight:700}</style>
+.dl{padding:8px 14px;border-radius:99px;border:1px solid rgba(240,184,80,.5);color:inherit;text-decoration:none;font-weight:700}.ask{display:block;text-align:center;margin:14px auto 0;max-width:440px;padding:13px 16px;border-radius:99px;border:1px solid rgba(37,211,102,.55);color:inherit;text-decoration:none;font-weight:700;background:rgba(37,211,102,.08)}</style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D8G0B699T7"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-D8G0B699T7');</script>
 <!-- Meta Pixel -->
@@ -46,6 +46,7 @@ footer{border-top:1px solid #ffffff10;padding:22px 0;font-size:.8rem;color:var(-
    <li>التوصيل: خلال يوم في القاهرة، ومن يومين إلى ثلاثة أيام في المحافظات.</li>
    <li>تُرسل نسختك من دار إنجاز، الناشر الرسمي في مصر.</li>
   </ul>
+  <a class="ask" href="https://wa.me/966579592419?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%B9%D9%86%D8%AF%D9%8A%20%D8%B3%D8%A4%D8%A7%D9%84%20%D8%B9%D9%86%20%D9%83%D8%AA%D8%A7%D8%A8%20%C2%AB%D9%87%D9%86%D8%AF%D8%B3%D8%A9%20%D8%A7%D9%84%D9%8A%D9%82%D9%8A%D9%86%C2%BB%20%D9%82%D8%A8%D9%84%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8%3A" target="_blank" rel="noopener" data-ev="to_wa_ask" data-from="masr_form">💬 عندك سؤال قبل الطلب؟ كلّمنا على واتساب</a>
   <form id="orderForm" novalidate>
    <p style="margin:0 0 12px;color:var(--muted);font-size:.95rem">✍️ ثلاث خانات فقط… ونتواصل معك لنكمل باقي التفاصيل.</p>
    <label>الاسم<input name="name" type="text" required autocomplete="name"></label>
@@ -94,6 +95,7 @@ footer{border-top:1px solid #ffffff10;padding:22px 0;font-size:.8rem;color:var(-
    <li>الكتاب كاملاً: ٤٣ محطة في خمس سور، على جوالك أينما كنت.</li>
    <li>ادفع بفودافون كاش، وأرسل صورة التحويل على واتساب، ويصلك الكتاب في اليوم نفسه بإذن الله.</li>
   </ul>
+  <a class="ask" href="https://wa.me/966579592419?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%B9%D9%86%D8%AF%D9%8A%20%D8%B3%D8%A4%D8%A7%D9%84%20%D8%B9%D9%86%20%D9%83%D8%AA%D8%A7%D8%A8%20%C2%AB%D9%87%D9%86%D8%AF%D8%B3%D8%A9%20%D8%A7%D9%84%D9%8A%D9%82%D9%8A%D9%86%C2%BB%20%D9%82%D8%A8%D9%84%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8%3A" target="_blank" rel="noopener" data-ev="to_wa_ask" data-from="masr_vc">💬 عندك سؤال قبل الطلب؟ كلّمنا على واتساب</a>
   <button type="button" class="btn" id="vc-open" style="width:100%;border:0;cursor:pointer">📱 اشترِ بفودافون كاش · 149 جنيه</button>
   <div id="vc" class="hide" style="margin-top:16px;padding:16px;border:1px solid rgba(240,184,80,.45);border-radius:16px">
    <p style="margin:0 0 10px"><b>١. حوّل 149 جنيهاً</b> إلى محفظة فودافون كاش:</p>
@@ -195,5 +197,8 @@ f.addEventListener('submit',async e=>{
  document.getElementById('vc-copy').addEventListener('click',e=>{try{navigator.clipboard.writeText('01024260541');e.target.textContent='تم النسخ ✓'}catch(_){}});
  document.getElementById('vc-wa').addEventListener('click',()=>{if(window.gtag)gtag('event','vc_sent',{value:149,currency:'EGP',id});if(window.fbq)fbq('trackCustom','VodafoneSent',{value:149,currency:'EGP'});});
 })();
+
+/* زر السؤال على واتساب */
+document.querySelectorAll('.ask').forEach(a=>a.addEventListener('click',()=>{if(window.gtag)gtag('event','to_wa_ask',{page:'masr',item:a.dataset.from});if(window.fbq)fbq('track','Contact');}));
 </script>
 </body></html>
