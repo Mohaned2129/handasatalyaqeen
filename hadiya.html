@@ -211,7 +211,7 @@ footer a{text-decoration:none;color:var(--gold)}
    <div class="divider" aria-hidden="true">✦</div>
    <h2>الأجوبة كلها… <span class="gold">في ٤٣ محطة</span>.</h2>
    <p class="sub">خمسة أبواب · ٢٩٨ آية · رحلة تدبّر عملية من القرآن إلى حياتك.</p>
-   <a class="cta" href="https://buy.stripe.com/8x28wQ0tj8RQ8se6z9d3i16?client_reference_id=yaqeen_ebook" target="_blank" rel="noopener" data-ev="to_full_book">📱 الكتاب الإلكتروني كاملاً · $4.99</a>
+   <a class="cta" href="https://buy.stripe.com/bJe4gA8ZP3xwbEq9Lld3i1d?client_reference_id=yaqeen_ebook" target="_blank" rel="noopener" data-ev="to_full_book">📱 الكتاب الإلكتروني كاملاً · $6.99</a>
    <div class="more">
     <a href="masr.html?utm_source=hadiya&utm_medium=page" data-ev="to_masr">📦 في مصر؟ الورقي يصل لبيتك · <b>600 جنيه</b></a>
     <a href="#doors" data-ev="to_doors">🤍 لا تستطيع ثمنه؟ اختر باباً هدية</a>
@@ -240,8 +240,9 @@ footer a{text-decoration:none;color:var(--gold)}
  new IntersectionObserver(function(es){st.classList.toggle('show',!es[0].isIntersecting&&es[0].boundingClientRect.top<0)}).observe(top);
  // القياس
  document.querySelectorAll('[data-read]').forEach(function(a){a.addEventListener('click',function(){if(window.gtag)gtag('event','read_free',{item:a.dataset.read,position:a.dataset.pos||'',page:'hadiya'})})});
- document.querySelectorAll('[data-ev]').forEach(function(a){a.addEventListener('click',function(){if(window.gtag)gtag('event',a.dataset.ev,{page:'hadiya'});if(window.fbq){if(a.dataset.ev==='to_full_book')fbq('track','InitiateCheckout',{value:4.99,currency:'USD'});else if(a.dataset.ev==='to_masr')fbq('trackCustom','ToMasr')}})});
+ document.querySelectorAll('[data-ev]').forEach(function(a){a.addEventListener('click',function(){if(window.gtag)gtag('event',a.dataset.ev,{page:'hadiya'});if(window.fbq){if(a.dataset.ev==='to_full_book')fbq('track','InitiateCheckout',{value:6.99,currency:'USD'});else if(a.dataset.ev==='to_masr')fbq('trackCustom','ToMasr')}})});
 })();
 </script>
+<script>/* مصر: لا يظهر سعر الدولار ولا زر البطاقة (قرار مهند 28 نوفمبر) */(async()=>{try{const t=await fetch('https://www.cloudflare.com/cdn-cgi/trace',{cache:'no-store'}).then(r=>r.text());if((t.match(/^loc=(\w+)/m)||[])[1]!=='EG')return;document.querySelectorAll('a[href*="buy.stripe.com"],#e-btn').forEach(a=>{const p=a.closest('p.note')||a;p.style.display='none'});document.querySelectorAll('.price').forEach(p=>{const c=p.closest('a,div')||p;c.style.display='none'});}catch(e){}})();</script>
 </body>
 </html>
